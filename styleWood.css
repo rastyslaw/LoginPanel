@@ -1,0 +1,45 @@
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+@namespace comp "components.*";
+
+s|Application 
+{   
+	background-color: #4A4A4A;  
+}
+@font-face { 
+	src: url("../assets/tahoma.ttf"); 
+	fontFamily: tahoma; 
+	embedAsCFF: true;  
+}  
+comp|LoginPanel  { 
+	skinClass: ClassReference("skins.LoginPanelWoodSkin"); 
+	font-family: tahoma;
+	font-size: 18pt;  
+	focus-color: #998061;  
+} 
+comp|LoginPanel  s|TextInput {  
+	error-color: #998061; 
+}   
+mx|Alert {   
+	borderColor: #9C7F5D; 
+    backgroundColor: #F2E4CC;
+    dropShadowVisible: true;
+    chromeColor: #9C7F5D; 
+    titleStyleName: alertTitle;
+    messageStyleName: alertMessage;
+    buttonStyleName: alertButton;
+	creationCompleteEffect: alertCreationCompleteEffect;
+}
+.alertTitle{
+    fontSize: 16; 
+    fontWeight: bold;
+}
+.alertMessage {
+    fontSize: 12; 
+}
+.alertButton {
+    fontSize: 12; 
+}
+
+
+

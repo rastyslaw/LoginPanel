@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:fb="http://ns.adobe.com/flashbuilder/2009" 
+		xmlns:fxg="fxg.*" alpha.disabledStates="0.5" blendMode="normal"> 
+	
+	<fx:Metadata>
+		[HostComponent("spark.components.TextInput")]
+	</fx:Metadata>  
+
+    <s:states>
+        <s:State name="normal"/>
+        <s:State name="disabled" stateGroups="disabledStates"/>
+        <s:State name="normalWithPrompt"/>
+        <s:State name="disabledWithPrompt" stateGroups="disabledStates"/>
+    </s:states>
+	
+	<fxg:line bottom="5" /> 
+	
+	<!-- text -->  
+	<s:RichEditableText id="textDisplay"
+			verticalAlign="middle" widthInChars="10" textAlign="center"
+			color="#333333" left="8" right="4" top="1" bottom="1" />
+	
+	<!-- prompt -->  
+	<s:Label id="promptDisplay" left="8" right="4" top="1" bottom="1" includeIn="normalWithPrompt"
+			color="#333333" maxDisplayedLines="1" verticalAlign="middle" textAlign="center"/>
+	
+</s:Skin>

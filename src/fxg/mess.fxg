@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Graphic version="2.0" viewHeight="32" viewWidth="32" ATE:version="1.0.0" flm:version="1.0.0" d:id="1" d:using="" xmlns="http://ns.adobe.com/fxg/2008" xmlns:ATE="http://ns.adobe.com/ate/2009" xmlns:d="http://ns.adobe.com/fxg/2008/dt" xmlns:flm="http://ns.adobe.com/flame/2008">
+  <Library/>
+  <Group blendMode="normal" d:type="layer" d:userLabel="Слой 1">
+    <Path x="0.75" y="5.95" flm:isDrawingObject="true" data="M29.15 -0.05Q30.026172 -0.041992188 30.025 0.8L30.025 19.1Q30.029492 19.513672 29.775 19.775 29.460938 20.029492 29.05 20.025L0.95 20.025Q0.58535156 20.028125 0.275 19.775 -0.08359375 19.465234 -0.025 19.1L-0.025 0.8Q-0.083398438 0.4375 0.275
+ 0.175 0.49335937 -0.043359375 0.825 -0.05L0.95 -0.025 29.05 -0.025ZM23.475 12.775 28.075 16.375 28.075 3.475 17.175 12.025Q16.694922 12.331445 16.15 12.5 15.604102 12.657031 15 12.675 13.736133 12.676562 12.825 12.025L1.975 3.675 1.975 16.475
+ 6.675 12.825Q6.93125 12.573047 7.25 12.575L7.35 12.625 7.45 12.6Q7.7509766 12.605273 7.975 12.875 8.2794922 13.084961 8.275 13.4 8.2275391 13.766992 7.975 14.025L2.7 18.175 27.55 18.175 22.225 14.025Q21.869141 13.766602 21.875 13.4 21.819141
+ 13.0875 22.125 12.875 22.336328 12.571094 22.75 12.575L22.875 12.55Q23.210742 12.554492 23.475 12.775Z">
+      <fill>
+        <SolidColor color="#998061"/>
+      </fill>
+    </Path>
+  </Group>
+  <Private>
+      <xfl:PrivateElement d:ref="#1" xmlns:xfl="http://ns.adobe.com/xfl/2008/">
+        <xfl:publishSettings xfl:source=""/>
+        <xfl:mobileSettings xfl:source=""/>
+        <xfl:as3ExportItems/>
+      </xfl:PrivateElement>
+    </Private>
+  </Graphic>

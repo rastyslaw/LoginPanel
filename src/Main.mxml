@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:comp="components.*" skinClass="skins.AppSkin"> 
+	
+	<fx:Declarations>
+		<mx:Parallel id="alertCreationCompleteEffect">
+			<mx:Fade duration="300" />
+			<mx:Move yFrom="50" duration="300" />
+		</mx:Parallel>	  
+	</fx:Declarations>	 
+    
+	<fx:Style source="../style.css" />  
+	
+	<comp:LoginPanel source="Users" endpoint="http://testerok.xe0.ru/ZendAMF/service.php" horizontalCenter="0" verticalCenter="0" />  
+
+</s:Application> 
+    

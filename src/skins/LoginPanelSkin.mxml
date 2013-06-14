@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+        xmlns:s="library://ns.adobe.com/flex/spark"  
+        xmlns:mx="library://ns.adobe.com/flex/mx"
+		xmlns:fxg="fxg.*" alpha.disabled="0.5" minWidth="210">
+	
+	<!-- host component --> 
+	<fx:Metadata> 
+		[HostComponent("components.LoginPanel")]
+	</fx:Metadata> 
+	 
+	<!-- declarations --> 
+	<fx:Declarations>
+		<s:SolidColor id="fillcolor" color="#262626"/>
+		<s:SolidColorStroke id="strokeColor" color="#121212"/>  
+	</fx:Declarations>
+	
+	<!-- states -->  
+	<s:states>
+		<s:State name="normal" />
+		<s:State name="disabled" />
+		<s:State name="login"/>
+		<s:State name="register"/>   
+		<s:State name="lost" />
+	</s:states>
+	
+	<s:Rect id="rect" radiusX="4" radiusY="4" top="0" right="0" bottom="0" 
+		left="0" fill="{fillcolor}" stroke="{strokeColor}"> 
+	</s:Rect>	 
+	
+	 <!--<s:Image source="../icon.png" horizontalCenter="0" top="10" />-->
+	<fxg:icon left="106" top="10"/>   
+	  
+	<!-- content -->
+	<s:Group id="container" top="38" bottom="30" right="10" left="10" horizontalCenter="0">  
+		<s:layout>  
+			<s:VerticalLayout gap="10"/>   
+		</s:layout>  
+		<s:TextInput id="username" width="100%" height="32" prompt="Username" change="hostComponent.validateUser()" excludeFrom="lost" skinClass="skins.TextInputSkin"/> 
+	    <s:TextInput id="password" width="100%" height="32" prompt="Password" displayAsPassword="true" change="hostComponent.validatePass()" excludeFrom="lost" skinClass="skins.TextInputSkin"/>  
+	    <s:TextInput id="confirm" width="100%" height="32" prompt="Confirm password" includeIn="register" displayAsPassword="true" skinClass="skins.TextInputSkin"/>  
+		<s:TextInput id="email" width="100%" height="32" prompt="e-mail" excludeFrom="login" skinClass="skins.TextInputSkin"/>   
+		<s:Button id="loginButton" width="100%" height="32" label.login="Login" label.register="Register" label.lost="Get password"/>   
+	</s:Group> 
+   
+	<s:Button id="lost" height="20" label="Lost pass?" bottom="6" right="6" includeIn="login" skinClass="skins.ButtonSkin"/>   
+	<s:Button id="noregister" height="20" label.login="Not register?" label.register="Return to login" label.lost="Return to login" bottom="6" left="10" skinClass="skins.ButtonSkin"/>  
+	
+	<!-- transitions -->    
+	<s:transitions>  
+		<s:Transition fromState="login" toState="register">   
+			<s:Sequence>  
+				<s:Resize target="{this}" duration="200"/>
+				<s:AddAction target="{confirm}"/>
+				<s:AddAction target="{email}"/>
+				<s:Parallel>
+					<s:Fade target="{confirm}" alphaFrom="0" alphaTo="1" duration="200"/> 
+					<s:Fade target="{email}" alphaFrom="0" alphaTo="1" duration="200"/> 
+				</s:Parallel>	
+			</s:Sequence>
+		</s:Transition>
+		<s:Transition fromState="register" toState="login">   
+			<s:Sequence> 
+				<s:Parallel>
+					<s:Fade target="{confirm}" alphaFrom="1" alphaTo="0" duration="200"/> 
+					<s:Fade target="{email}" alphaFrom="1" alphaTo="0" duration="200"/> 
+				</s:Parallel>	
+				<s:RemoveAction target="{confirm}"/> 
+				<s:RemoveAction target="{email}"/> 
+				<s:Resize target="{this}" duration="200"/>
+			</s:Sequence>  
+		</s:Transition> 
+		<s:Transition fromState="login" toState="lost">  
+			<s:Sequence>  
+				<s:Parallel>
+					<s:Fade target="{username}" alphaFrom="1" alphaTo="0" duration="200"/> 
+					<s:Fade target="{password}" alphaFrom="1" alphaTo="0" duration="200"/> 
+				</s:Parallel>
+				<s:RemoveAction target="{username}"/> 
+				<s:RemoveAction target="{password}"/> 
+				<s:AddAction target="{email}"/>
+				<s:Fade target="{email}" alphaFrom="0" alphaTo="1" duration="200"/> 
+				<s:Resize target="{this}" duration="200"/>
+			</s:Sequence>  
+		</s:Transition>
+		<s:Transition fromState="lost" toState="login">  
+			<s:Sequence>  
+				<s:Fade target="{email}" alphaFrom="1" alphaTo="0" duration="200"/> 
+				<s:RemoveAction target="{email}"/>
+				<s:Resize target="{this}" duration="200"/> 
+				<s:AddAction target="{username}"/>
+				<s:AddAction target="{password}"/>
+				<s:Parallel>
+					<s:Fade target="{username}" alphaFrom="0" alphaTo="1" duration="200"/>
+					<s:Fade target="{password}" alphaFrom="0" alphaTo="1" duration="200"/>
+				</s:Parallel>	
+				<s:Resize target="{this}" duration="200"/> 
+			</s:Sequence>  
+		</s:Transition>
+	</s:transitions>	
+	
+</s:Skin>

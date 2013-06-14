@@ -1,0 +1,52 @@
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+@namespace comp "components.*";
+
+s|Application 
+{   
+	background-color: #4A4A4A;  
+}
+@font-face { 
+	src: url("../assets/verdana.ttf"); 
+	fontFamily: verdana; 
+	embedAsCFF: true;   
+} 
+comp|LoginPanel {  
+	skinClass: ClassReference("skins.LoginPanelSkin"); 
+	font-family: verdana;
+	font-size: 13pt;   
+	chromeColor: #0080FF;
+} 
+.errorTip { 
+	color: #ffffff;
+	background-color: #CE2929;
+	font-size: 10;
+	font-weight: "bold";
+	shadow-color: #666666;
+	shadow-distance: 0;
+	padding-bottom: 4;
+	padding-left: 4;
+	padding-right: 4;
+	padding-top: 4;
+}   
+mx|Alert {    
+    backgroundColor: #EFEFEF;  
+    chromeColor: #2492ff;      
+    titleStyleName: alertTitle;
+    messageStyleName: alertMessage;
+    buttonStyleName: alertButton;
+	creationCompleteEffect: alertCreationCompleteEffect;
+}
+.alertTitle{
+    fontSize: 15; 
+    fontWeight: bold;
+}
+.alertMessage {
+    fontSize: 12; 
+}
+.alertButton {
+    fontSize: 12; 
+}
+
+
+

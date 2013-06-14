@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			 xmlns:s="library://ns.adobe.com/flex/spark" 
+			 xmlns:fb="http://ns.adobe.com/flashbuilder/2009" 
+			 xmlns:mx="library://ns.adobe.com/flex/mx"
+			 minWidth="120" minHeight="48" alpha.disabled="0.5">
+ 
+	<!-- host component --> 
+	<fx:Metadata> 
+		[HostComponent("spark.components.Button")]
+	</fx:Metadata> 
+	 
+	<!-- states -->
+	<s:states>
+		<s:State name="up" />
+		<s:State name="over" stateGroups="od" />
+		<s:State name="down" stateGroups="od"/> 
+		<s:State name="disabled" />
+	</s:states> 
+	   
+	<s:BitmapImage source="@Embed('../ico/noteBtn.png')" source.od="@Embed('../ico/noteBtnOver.png')"
+				  verticalCenter="0" horizontalCenter="0">
+		<s:filters.down> 
+            <s:DropShadowFilter  
+                    distance="2" angle="45" color="0xC43F3C"  alpha=".4" 
+                    blurX="2" blurY="2" strength=".6" inner="false" knockout="false"/>
+        </s:filters.down>	 	    
+	</s:BitmapImage>
+			   
+	<s:Label id="labelDisplay" 
+			 textAlign="center" 
+			 verticalAlign="middle" 
+			 maxDisplayedLines="1" color="0x202020" 
+			 horizontalCenter="0" verticalCenter="1"
+			 left="10" right="10" top="2" bottom="2">
+	</s:Label>
+	
+</s:Skin>

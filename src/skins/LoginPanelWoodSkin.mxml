@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+        xmlns:s="library://ns.adobe.com/flex/spark"  
+        xmlns:mx="library://ns.adobe.com/flex/mx"
+		xmlns:fxg="fxg.*" alpha.disabled="0.5">
+
+	<!-- host component -->   
+	<fx:Metadata> 
+		[HostComponent("components.LoginPanel")]
+	</fx:Metadata> 
+	
+	<!-- states -->  
+	<s:states>
+		<s:State name="normal" />
+		<s:State name="disabled" />
+		<s:State name="login"/> 
+		<s:State name="register"/>    
+		<s:State name="lost" />
+	</s:states> 
+	 
+	<fx:Script>
+		<![CDATA[
+			import flash.events.Event;
+			import flash.utils.getDefinitionByName;
+			import mx.managers.ToolTipManager;
+			import spark.components.TextInput;
+			import spark.primitives.BitmapImage;
+			
+			private function correct():void {
+				ToolTipManager.currentToolTip.visible = false; 
+			}
+			
+			private function correct2(e:Event):void { 
+				var tip:TextInput = e.currentTarget as TextInput;
+				if (tip.id == "username") {
+					hostComponent.validateUser(); 
+					tipOn1.visible = correctOn(username);
+					tipOff1.visible = correctOff(username);
+				}
+				else if(tip.id == "password") {
+					hostComponent.validatePass();
+					tipOn2.visible = correctOn(password); 
+					tipOff2.visible = correctOff(password);	
+				}
+			}
+			 
+			private function correctOn(tip:TextInput):Boolean {
+				if (tip.text == "") return false;
+				if (tip.errorString != "") return false;
+					else return true;   
+			}
+			 
+			private function correctOff(tip:TextInput):Boolean {
+				if (tip.text == "") return false;    
+				if (tip.errorString != "") return true; 
+					else return false;   
+			}
+			  
+			private function correctConfirmTip():void {
+				if (loginButton.label == "Sign in") return;
+				if (tipOff2.visible || tipOff1.visible) {
+					tipOn3.visible = false;
+					tipOff3.visible = false; 
+					return;  
+				}
+				tipOn3.visible = correctOn(confirm); 
+				tipOff3.visible = correctOff(confirm);   
+			}
+		]]> 
+	</fx:Script>
+	
+	<s:BitmapImage id="img" source="@Embed('../ico/loginBg.png')" left="0" top="0" right="0" bottom="0"/>
+	
+	<s:Label text="Application Acsess" top="18" left="70" color="0x594126" >   
+		<s:filters> 
+			 <s:DropShadowFilter  
+                    distance="2" angle="45" color="#000000" alpha=".5" 
+                    blurX="6" blurY="6" strength="0.8" />  
+		</s:filters>
+	</s:Label>
+	<!-- content -->
+	<s:Group id="container" top="54" left="30" right="30">   
+		<s:layout>   
+			<s:VerticalLayout gap="12"/>         
+		</s:layout>   
+			<s:TextInput id="username" width="76%" height="32" prompt="Username" change="correct2(event)" skinClass="skins.TextWoodInputSkin" toolTipShown="correct()" />  
+			<s:TextInput id="password" width="76%" height="32" prompt="Password" displayAsPassword="true" change="correct2(event)" skinClass="skins.TextWoodInputSkin" toolTipShown="correct()"/>  
+			<s:TextInput id="confirm" width="76%" height="32" prompt="Confirm password" change="correct2(event)" includeIn="register" displayAsPassword="true" skinClass="skins.TextWoodInputSkin" toolTipShown="correct()"/>  
+	</s:Group> 
+    
+	<s:Button id="loginButton" click="correctConfirmTip()" right="30" bottom="20" label.login="Sign in" label.register="Sign up" skinClass="skins.ButtonWoodSkin"/>      
+	<s:Button id="noregister" left="50" bottom="35" height="20" label.login="Not register?" label.register="Return to login" skinClass="skins.ButtonWoodRegSkin"/>  
+	 
+	 
+	<s:BitmapImage id="tipOff1" source="@Embed('../ico/toolTipOff.png')" visible.login="false" visible.register="false" x="{username.x+username.width+30}" y="{username.y+52}" /> 
+	<s:BitmapImage id="tipOn1" source="@Embed('../ico/toolTipOn.png')" visible.login="false" visible.register="false" x="{username.x+username.width+30}" y="{username.y+52}" /> 
+	  
+	<s:BitmapImage id="tipOff2" source="@Embed('../ico/toolTipOff.png')" visible.login="false" visible.register="false" x="{password.x+password.width+30}" y="{password.y+52}"/> 
+	<s:BitmapImage id="tipOn2" source="@Embed('../ico/toolTipOn.png')" visible.login="false" visible.register="false" x="{password.x+password.width+30}" y="{password.y+52}"/> 
+	  
+	<s:BitmapImage id="tipOff3" source="@Embed('../ico/toolTipOff.png')" visible.login="false" visible.register="false" x="{confirm.x+confirm.width+30}" y="{confirm.y+52}" /> 
+	<s:BitmapImage id="tipOn3" source="@Embed('../ico/toolTipOn.png')" visible.login="false" visible.register="false" x="{confirm.x+confirm.width+30}" y="{confirm.y+52}" /> 
+	
+	<s:Group top="54" left="42" >  
+		<s:layout>    
+			<s:VerticalLayout gap="12"/>       
+		</s:layout>  
+		<fxg:char/> 
+		<fxg:pas /> 
+		<fxg:mess includeIn="register"/> 
+	</s:Group>  
+	
+	<!-- transitions -->     
+	<s:transitions>  
+		<s:Transition fromState="*" toState="*"> 
+			<s:Fade targets="{[tipOff1, tipOn1, tipOff2, tipOn2, tipOff3, tipOn3]}" duration="500" alphaFrom="1" alphaTo="0"/>
+		</s:Transition>
+	</s:transitions>	
+	
+</s:Skin>

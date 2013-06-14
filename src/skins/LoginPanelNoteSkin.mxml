@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+        xmlns:s="library://ns.adobe.com/flex/spark"  
+        xmlns:mx="library://ns.adobe.com/flex/mx"
+		minWidth="307" minHeight="311" alpha.disabled="0.5">
+  
+	<!-- host component --> 
+	<fx:Metadata> 
+		[HostComponent("components.LoginPanel")]
+	</fx:Metadata> 
+	
+	<!-- states -->  
+	<s:states>
+		<s:State name="normal" />
+		<s:State name="disabled" />
+		<s:State name="login"/>
+		<s:State name="register"/>    
+		<s:State name="lost" />
+	</s:states> 
+	 
+	<s:BitmapImage id="img" source="@Embed('../ico/noteLoginForm.png')" left="0" top="0"/>
+	
+	<!-- content -->
+	<s:Group id="container" top="76" left="80" width="160">  
+		<s:layout>  
+			<s:VerticalLayout gap="8"/>    
+		</s:layout>  
+		<s:TextInput id="username" width="100%" height="32" prompt="Username" change="hostComponent.validateUser()" excludeFrom="lost" skinClass="skins.TextNoteInputSkin" /> 
+	    <s:TextInput id="password" width="100%" height="32" prompt="Password" displayAsPassword="true" excludeFrom="lost" change="hostComponent.validatePass()" skinClass="skins.TextNoteInputSkin"/>  
+	    <s:TextInput id="confirm" width="100%" height="32" prompt="Confirm password" includeIn="register" displayAsPassword="true" skinClass="skins.TextNoteInputSkin"/>  
+		<s:TextInput id="email" width="100%" height="32" prompt="e-mail" excludeFrom="login" skinClass="skins.TextNoteInputSkin"/>   
+	</s:Group>   
+	
+	<s:Button id="loginButton" left="100" y="240" label.login="Login" label.register="Register" label.lost="Get password" skinClass="skins.ButtonNoteSkin"/>    
+	
+	<s:Group top="70" left="10">  
+		<s:layout>  
+			<s:VerticalLayout gap="14"/>     
+		</s:layout>  
+		<s:Button id="lost" height="20" label="Lost pass?" includeIn="login" skinClass="skins.ButtonSkin" rotation="-90"/>   
+		<s:Button id="noregister" height="20" label.login="Not register?" label.register="Return to login" label.lost="Return to login" skinClass="skins.ButtonSkin" rotation="-90"/> 
+	</s:Group>
+		
+</s:Skin>
